@@ -6,7 +6,8 @@
     "dev": "serverless offline --stage dev",
     "deploy": "serverless deploy --stage prod",
     "info": "serverless info --stage prod",
-    "remove": "serverless remove --stage prod"
+    "remove": "serverless remove --stage prod",
+    "generate": "drizzle-kit generate --config=drizzle.config.js"
   },
   "dependencies": {
     "@aws-sdk/client-ssm": "^3.628.0",
