@@ -13,6 +13,18 @@ provider:
   environment:
     DEBUG: ${env:DEBUG, 0} 
     DATABASE_URL: ${env:DATABASE_URL, "fallback value"}
+  iam:
+    role:
+      name: serverless-ssm-role
+      statements:
+        - Effect: "Allow"
+          Resource: "*"
+          Action:
+            - "ssm:GetParameter"
+            - "ssm:GetParameters"
+            - "ssm:GetParameterByPath"
+            - "ssm:GetParameterHistory"
+            - "ssm:DescribeParameters"
 
 functions:
   api:
@@ -26,6 +38,7 @@ custom:
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
       - AWS_SESSION_TOKEN
+      - DATABASE_URL
 
 plugins:
   - serverless-offline
