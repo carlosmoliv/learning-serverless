@@ -36,6 +36,8 @@ jobs:
       run: |
         export DB_URL=$(neonctl connection-string --branch dev --api-key ${{ env.API_KEY }})
         npx tsx src/cli/put-secrets.js dev $DB_URL
+    - name: Install serverless global
+      run: npm install -g serverless
     - name: Deploy dev stage
       run: |
         npm run deploy-dev-stage
