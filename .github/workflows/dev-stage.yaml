@@ -35,10 +35,14 @@ jobs:
     - name: Branch Connection String in Parameter Store
       run: |
         export DB_URL=$(neonctl connection-string --branch dev --api-key ${{ env.API_KEY }})
-        npx tsx src/cli/putSecrets.js dev $DB_URL
+        npx tsx src/cli/put-secrets.js dev $DB_URL
+    - name: Install serverless global
+      run: npm install -g serverless
     - name: Deploy dev stage
       run: |
         npm run deploy-dev-stage
+      env:
+        SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
     - name: Dev Stage Pull Request
       run: |
         export PR_BRANCH=$(git branch --show-current)
