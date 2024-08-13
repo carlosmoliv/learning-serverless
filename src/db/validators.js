@@ -8,7 +8,7 @@ async function validateLead(postData) {
   let hasError;
   let validData = {};
   try {
-    const validData = lead.parse(postData);
+    validData = lead.parse(postData);
     hasError = false;
     message = "";
   } catch (error) {
