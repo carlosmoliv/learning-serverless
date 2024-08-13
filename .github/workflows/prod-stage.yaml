@@ -23,6 +23,6 @@ jobs:
         node-version: "20.11"
         cache: 'npm'
     - name: Install dependencies
-      run: npm install
+      run: npm install --legacy-peer-deps
     - name: Deploy
       run: npm run deploy
