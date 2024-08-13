@@ -1,8 +1,8 @@
 name: Deploy Dev Stage
 
 on:
-  # push:
-  #   branches: [ dev ]
+  push:
+    branches: [ dev ]
   workflow_dispatch:
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
         node-version: "20.11"
         cache: 'npm'
     - name: Install dependencies
-      run: npm install
+      run: npm install --legacy-peer-deps
     - name: Install neonctl and tsx
       run: npm install -g neonctl tsx
     - name: Delete Previous Branch
